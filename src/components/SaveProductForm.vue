@@ -12,7 +12,8 @@
           <label for="Price">Price</label>
           <input type="number" v-model="product.price" class="form-control" id="price" placeholder="Enter Prodcut Price">
       </div>
-      <button type="submit" v-on:click.prevent="onSubmit"></button>
+      <button type="submit" v-on:click.prevent="onSubmit">{{product.id?'Edit':'Add'}} Product</button>
+      <button type="submit" v-on:click.prevent="onCancel" v-if="product.id">Cancel</button>
   </form>
 </template>
 <script>
@@ -21,6 +22,9 @@
         methods:{
             onSubmit(){
                 this.$emit('submit',this.product)
+            },
+            onCancel(){
+                this.$emit('cancel')
             }
         }
     }
