@@ -1,16 +1,12 @@
 <template>
-  <product-list></product-list>
+<manage-product></manage-product>
 </template>
 
 <script>
-import ProductList from './components/ProductList'
-export default{
-    components:{
-        ProductList
+import ManageProduct from './components/ManageProduct'
+export default {
+    components: {
+        ManageProduct
     }
 }
 </script>
-
-<style>
-
-</style>
