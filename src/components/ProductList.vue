@@ -12,6 +12,7 @@
               <td>{{product.name}}</td>
               <td>{{product.description}}</td>
               <td>{{product.price}}</td>
+              <td><a href="#" v-on:click.prevent="onDelete(product.id)">Delete</a></td>
           </tr>
       </tbody>
   </table>
@@ -22,6 +23,9 @@ export default {
   methods:{
       onEdit(product){
           this.$emit('edit',product)
+      },
+      onDelete(productID){
+          this.$emit('delete',productID)
       }
   }
 }

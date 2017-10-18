@@ -1,7 +1,7 @@
 <template>
     <section>
         <save-product-form :product="productInForm" v-on:submit="onFormSave" v-on:cancel="resetProductInForm"></save-product-form>
-        <product-list :products="products" v-on:edit="onEditClick"></product-list>
+        <product-list :products="products" v-on:edit="onEditClick" v-on:delete="onDeleteClick"></product-list>
     </section>
 </template>
 <script>
@@ -52,7 +52,7 @@ export default {
         onFormSave(prodcut) {
             let index = this.products.findIndex((p) => p.id === prodcut.id)
             if (index != -1) {
-                this.products.splice(index,1,prodcut);
+                this.products.splice(index, 1, prodcut);
             } else {
                 prodcut.id = uuid.v4();
                 this.products.push(prodcut)
@@ -66,6 +66,15 @@ export default {
         onEditClick(prodcut) {
             this.productInForm = { ...prodcut };
 
+        },
+        onDeleteClick(prodcutID) {
+            let index = this.products.findIndex((p) => p.id === prodcutID);
+            this.products.splice(index, 1);
+            // if(index)
+            //     this.resetProductInForm();
+            if (productId === this.productInForm.id) {
+                this.resetProductInForm()
+            }
         }
     }
 }
