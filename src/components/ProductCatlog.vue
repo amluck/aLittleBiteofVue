@@ -1,10 +1,16 @@
 <template>
   <div>
-    <p>this is just a empty module</p>
+    <ul v-for="product in products">
+      <li>{{product.name}}</li>
+    </ul>
   </div>
 </template>
 <script>
-    export default{
-        name:'product-catlog'
-    }
+import { mapGetters } from "vuex";
+export default {
+  name: "product-catlog",
+  computed: mapGetters({
+    products: "getProducts"
+  })
+};
 </script>
